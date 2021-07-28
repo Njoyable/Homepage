@@ -39,3 +39,7 @@
 .column.middle {
   width: 50%;
 }
+
+div.padding1 {
+	padding-left: 5cm;
+}
