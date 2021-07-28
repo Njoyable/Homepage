@@ -50,6 +50,7 @@ img {
   margin-right: auto;
 }
 
-form {
-  text-align: center;
+form { 
+margin: 0 auto; 
+width:250px;
 }
