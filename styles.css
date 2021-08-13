@@ -50,3 +50,10 @@ img {
   margin-right: auto;
 }
 
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+
