@@ -1,3 +1,4 @@
+/* navigation bar*/
 .topnav {
   overflow: hidden;
 }
@@ -40,20 +41,20 @@
   width: 50%;
 }
 
-
+/* centers all img*/
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-
+/*centers body*/
 body {
     text-align: center;
 }
 form {
     display: inline-block;
 }
-
+/*rounded corners for input field*/
 input[type=text]{
   border-radius:10px;
 }
