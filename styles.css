@@ -54,3 +54,6 @@ form {
     display: inline-block;
 }
 
+input[type=text]{
+  border-radius:10px;
+}
