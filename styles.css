@@ -54,7 +54,18 @@ body {
 form {
     display: inline-block;
 }
-/*rounded corners for input field*/
-input[type=text]{
-  border-radius:10px;
+/*rounded corners for input*/
+input[type="text"] {
+    width: 200px;
+    height: 20px;
+    padding-right: 50px;
+	border-radius: 10px;
+}
+
+input[type="submit"] {
+    margin-left: -50px;
+    height: 20px;
+    width: 50px;
+	border-radius: 10px;
+}
 }
