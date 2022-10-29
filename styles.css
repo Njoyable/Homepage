@@ -68,3 +68,7 @@ input[type="submit"] {
     width: 50px;
 	border-radius: 10px;
 }
+
+h1 {
+  color: blue;
+}
