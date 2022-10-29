@@ -69,6 +69,6 @@ input[type="submit"] {
 	border-radius: 10px;
 }
 
-h1 {
+h1 a{
   color: red;
 }
