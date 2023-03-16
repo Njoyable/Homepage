@@ -1,5 +1,5 @@
 // Define an array to store restaurant names
-let restaurants = [];
+let restaurants = ["Katzentempel", "Vietal"];
 
 // Define a function to add a new restaurant to the list
 function addNewRestaurant() {
