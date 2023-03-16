@@ -11,6 +11,24 @@ function addNewRestaurant() {
   }
 }
 
+const fetchBtn = document.getElementById('fetch-btn');
+const listContainer = document.getElementById('list-container');
+
+fetchBtn.addEventListener('click', () => {
+  fetch('ha_spots.csv')
+    .then(response => response.text())
+    .then(data => {
+      const rows = data.split('\n');
+      listContainer.innerHTML = '';
+      rows.forEach(row => {
+        const li = document.createElement('li');
+        li.textContent = row.trim();
+        listContainer.appendChild(li);
+      });
+    })
+    .catch(error => console.error(error));
+});
+
 // Define a function to select a random restaurant from the list
 function selectRandomRestaurant() {
   let numRestaurants = restaurants.length;
