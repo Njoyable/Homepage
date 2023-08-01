@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSV to HTML Table</title>
+    <title>Display ha_spots.csv</title>
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
-                <th>Column 4</th>
-                <th>Column 5</th>
-                <th>Column 6</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $csvFile = 'ha_spots.csv';
-
-            if (($handle = fopen($csvFile, 'r')) !== false) {
-                while (($data = fgetcsv($handle, 1000, ',')) !== false) {
-                    echo '<tr>';
-                    foreach ($data as $cell) {
-                        echo '<td>' . htmlspecialchars($cell) . '</td>';
-                    }
-                    echo '</tr>';
-                }
-                fclose($handle);
-            }
-            ?>
-        </tbody>
+    <h1>Contents of ha_spots.csv</h1>
+    <table id="csvTable">
+        <!-- Table content will be added dynamically using JavaScript -->
     </table>
+
+    <script>
+        // Function to fetch and display CSV data
+        function displayCSV() {
+            // Replace 'ha_spots.csv' with the actual path to your CSV file
+            const csvFilePath = 'ha_spots.csv';
+
+            fetch(csvFilePath)
+                .then(response => response.text())
+                .then(csvData => {
+                    const lines = csvData.split('\n');
+                    const table = document.getElementById('csvTable');
+
+                    lines.forEach((line, index) => {
+                        const columns = line.split(',');
+
+                        // Create a new row for each line in the CSV
+                        const newRow = table.insertRow(index);
+
+                        columns.forEach(column => {
+                            // Create a new cell for each column in the CSV
+                            const newCell = newRow.insertCell();
+                            newCell.textContent = column;
+                        });
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching or processing CSV data:', error);
+                });
+        }
+
+        // Call the displayCSV function when the page loads
+        window.onload = displayCSV;
+    </script>
 </body>
 </html>
