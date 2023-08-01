@@ -21,6 +21,8 @@ if __name__ == "__main__":
     csv_data = read_csv(csv_file_path)
     html_table_content = generate_html_table(csv_data)
 
-    # Save the HTML content to a file or use it as needed
+    # Create the HTML file and write the table content
     with open("output.html", "w") as html_file:
         html_file.write(html_table_content)
+
+    print("HTML table successfully generated in 'output.html' file.")
