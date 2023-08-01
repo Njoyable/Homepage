@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hannover Spots</title>
-    <script src="restaurants_scripts.js"></script>
-  </head>
+<head>
+    <title>Restaurants in Hannover</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 4</th>
+                <th>Column 5</th>
+                <th>Column 6</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $csvFile = 'ha_spots.csv';
 
-  <body>
-    <h1>Hannover Spots</h1>
-    <h2>Restaurants</h2>
-    <input type="file" accept=".csv" id="picker">
-    
-
-
-  </body>
+            if (($handle = fopen($csvFile, 'r')) !== false) {
+                while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+                    echo '<tr>';
+                    foreach ($data as $cell) {
+                        echo '<td>' . htmlspecialchars($cell) . '</td>';
+                    }
+                    echo '</tr>';
+                }
+                fclose($handle);
+            }
+            ?>
+        </tbody>
+    </table>
+</body>
 </html>
