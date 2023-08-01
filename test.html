@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSV Reader</title>
+</head>
+
+<body>
+    <h1>CSV Reader</h1>
+    <button onclick="readCSV()">Read CSV</button>
+    <hr />
+    <div id="output"></div>
+
+    <script>
+        function readCSV() {
+            const csvFilePath = 'ha_spots.csv';
+            fetch(csvFilePath)
+                .then(response => response.text())
+                .then(csvText => {
+                    const lines = csvText.split('\n');
+                    let output = '';
+
+                    lines.forEach((line) => {
+                        const entries = line.split(',');
+                        output += entries.join(', ') + '<br>';
+                    });
+
+                    document.getElementById('output').innerHTML = output;
+                })
+                .catch(error => {
+                    document.getElementById('output').innerText = 'Error occurred while fetching the file.';
+                });
+        }
+    </script>
+</body>
+
+</html>
