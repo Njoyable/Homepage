@@ -1,10 +1,28 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decider</title>
+    <title>Dynamic Input Fields</title>
+    <script>
+        function addInput() {
+            const container = document.getElementById("input-container");
+            const newInput = document.createElement("input");
+            newInput.type = "text";
+            newInput.name = "dynamicInput";
+            newInput.placeholder = "Enter something";
+            container.appendChild(newInput);
+        }
+    </script>
 </head>
 <body>
-    
+    <form action="submit-handler.php" method="post">
+        <div id="input-container">
+            <input type="text" name="input1" placeholder="Input 1">
+            <input type="text" name="input2" placeholder="Input 2">
+        </div>
+        <button type="button" onclick="addInput()">Add Input</button>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
