@@ -1,18 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const input1 = document.getElementById('input1');
-    const input2 = document.getElementById('input2');
-    const addButton = document.getElementById('submitButton');
+    const input1 = document.getElementById('start');
+    const input2 = document.getElementById('end');
+    const addButton = document.getElementById('submitB');
     const resultDisplay = document.createElement('p');
     
     addButton.addEventListener('click', function() {
-      const value1 = parseInt(input1.value);
-      const value2 = parseInt(input2.value);
+      const time1 = input1.value.split(':');
+      const time2 = input2.value.split(':');
       
-      if (!isNaN(value1) && !isNaN(value2)) {
-        const sum = value1 + value2;
-        resultDisplay.textContent = `Sum: ${sum}`;
+      if (time1.length === 2 && time2.length === 2) {
+        const hours1 = parseInt(time1[0]);
+        const minutes1 = parseInt(time1[1]);
+        const hours2 = parseInt(time2[0]);
+        const minutes2 = parseInt(time2[1]);
+        
+        if (!isNaN(hours1) && !isNaN(minutes1) && !isNaN(hours2) && !isNaN(minutes2)) {
+          const totalMinutes1 = hours1 * 60 + minutes1;
+          const totalMinutes2 = hours2 * 60 + minutes2;
+          let timeDifference = totalMinutes2 - totalMinutes1;
+          
+          if (timeDifference < 0) {
+            timeDifference += 24 * 60; 
+          }
+          
+          const resultHours = Math.floor(timeDifference / 60);
+          const resultMinutes = timeDifference % 60;
+          
+          resultDisplay.textContent = `Time Difference: ${resultHours} hours ${resultMinutes} minutes`;
+        } else {
+          resultDisplay.textContent = 'Invalid input';
+        }
       } else {
-        resultDisplay.textContent = 'Invalid input';
+        resultDisplay.textContent = 'Invalid time format';
       }
     });
     
