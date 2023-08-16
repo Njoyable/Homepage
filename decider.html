@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Input Fields</title>
+    <title>Random Input Decision</title>
     <script>
         function addInput() {
             const container = document.getElementById("input-container");
@@ -13,16 +13,23 @@
             newInput.placeholder = "Enter something";
             container.appendChild(newInput);
         }
+
+        function chooseRandomInput() {
+            const inputElements = document.getElementsByName("dynamicInput");
+            const randomIndex = Math.floor(Math.random() * inputElements.length);
+            const chosenInput = inputElements[randomIndex].value;
+            alert("Randomly chosen input: " + chosenInput);
+        }
     </script>
 </head>
 <body>
-    <form action="submit-handler.php" method="post">
+    <form>
         <div id="input-container">
             <input type="text" name="input1" placeholder="Input 1">
             <input type="text" name="input2" placeholder="Input 2">
         </div>
         <button type="button" onclick="addInput()">Add Input</button>
-        <button type="submit">Submit</button>
+        <button type="button" onclick="chooseRandomInput()">Choose Random Input</button>
     </form>
 </body>
 </html>
