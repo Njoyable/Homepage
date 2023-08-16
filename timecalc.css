@@ -37,7 +37,9 @@ body {
     box-sizing: border-box;
     font-size: 14px;
   }
-  
+  label {
+    background-color: lightgray;
+  }
   button {
     background-color: #3498db;
     color: white;
