@@ -18,7 +18,9 @@
             const inputElements = document.getElementsByName("dynamicInput");
             const randomIndex = Math.floor(Math.random() * inputElements.length);
             const chosenInput = inputElements[randomIndex].value;
-            alert("Randomly chosen input: " + chosenInput);
+
+            const resultContainer = document.getElementById("result-container");
+            resultContainer.textContent = "Randomly chosen input: " + chosenInput;
         }
     </script>
 </head>
@@ -30,6 +32,8 @@
         </div>
         <button type="button" onclick="addInput()">Add Input</button>
         <button type="button" onclick="chooseRandomInput()">Choose Random Input</button>
+        
+        <div id="result-container"></div>
     </form>
 </body>
 </html>
