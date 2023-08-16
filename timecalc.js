@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const minutes1 = parseInt(time1[1]);
         const hours2 = parseInt(time2[0]);
         const minutes2 = parseInt(time2[1]);
-
-        console.log(hours1+" ", minutes1+" ", hours2±" ", minutes2+" ");
         
         if (!isNaN(hours1) && !isNaN(minutes1) && !isNaN(hours2) && !isNaN(minutes2)) {
           const totalMinutes1 = hours1 * 60 + minutes1;
