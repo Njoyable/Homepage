@@ -16,13 +16,14 @@
         }
 
         function chooseRandomInput() {
-            const inputElements = document.getElementsByName("dynamicInput");
+            const inputElements = document.querySelectorAll("input[name='dynamicInput']");
             const randomIndex = Math.floor(Math.random() * inputElements.length);
             const chosenInput = inputElements[randomIndex].value;
 
             const resultContainer = document.getElementById("result-container");
             resultContainer.textContent = "Randomly chosen input: " + chosenInput;
         }
+
     </script>
 </head>
 <body>
