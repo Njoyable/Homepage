@@ -1,51 +1,11 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  body {
-    background-color: #87CEEB; /* Sky blue background */
-    overflow: hidden;
-  }
-
-  .fish {
-    width: 100px;
-    height: 60px;
-    background-color: #FF4500; /* Koi fish color */
-    border-radius: 50px;
-    position: absolute;
-    animation: swim 4s linear infinite;
-  }
-
-  @keyframes swim {
-    0%, 100% {
-      transform: translateX(-100%);
-    }
-    50% {
-      transform: translateX(100%);
-    }
-  }
-
-  /* Create multiple fish instances */
-  .fish:nth-child(2) {
-    animation-delay: -1s;
-    top: 50px;
-  }
-
-  .fish:nth-child(3) {
-    animation-delay: -2s;
-    top: 100px;
-  }
-
-  /* Add more fish instances as needed */
-</style>
-<title>Swimming Koi Fishes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koi Pond</title>
+  <script src="koi.js" defer></script>
 </head>
 <body>
-  <div class="fish"></div>
-  <div class="fish"></div>
-  <div class="fish"></div>
-  <!-- Add more fish instances as needed -->
+  
 </body>
 </html>
