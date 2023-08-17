@@ -70,7 +70,7 @@ class Koi {
                           this.y+p[29])
         san.fill();
         san.beginPath();
-        san.fillStyle="lightblue";
+        san.fillStyle="black";
         san.arc(this.x+p[30],this.y+p[31],1,0,44/7);
         san.arc(this.x+p[32],this.y+p[33],1,0,44/7);
         san.fill();
@@ -142,7 +142,7 @@ const M = e => {
 }
 
 const Loop = () => {
-    san.fillStyle ="rgba(0,0,0,.12)"
+    san.fillStyle ="rgba(30, 143, 195,.12)"
     san.fillRect(0, 0, W, H)
     san.fillStyle = "red";
     san.fill()
@@ -155,7 +155,7 @@ const init = () => {
     let c = document.createElement("canvas");
     document.body.appendChild(c);
     c.style.position = "fixed";
-    c.style.background = "lightblue";
+    c.style.background = "black";
     c.style.width = "100vw";
     c.style.height = "100vh";
     c.height = H = innerHeight*2;
