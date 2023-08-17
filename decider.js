@@ -15,3 +15,4 @@ function chooseRandomInput() {
     const resultContainer = document.getElementById("result-container");
     resultContainer.textContent = "The Chosen One: " + chosenInput;
 }
+
