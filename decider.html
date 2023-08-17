@@ -21,7 +21,7 @@
             const chosenInput = inputElements[randomIndex].value;
 
             const resultContainer = document.getElementById("result-container");
-            resultContainer.textContent = "Randomly chosen input: " + chosenInput;
+            resultContainer.textContent = "The Chosen One: " + chosenInput;
         }
 
     </script>
@@ -30,11 +30,11 @@
     <div class="topnav">
         <a href="index.html" style="float:right">Homepage</a>	
     </div>
-
+    <div><p>Füge Optionen ein. Die Pizza und Burger Felder müssen auch neu beschriftet werden!</p></div>
     <form>
         <div id="input-container">
-            <input type="text" name="input1" placeholder="Input 1">
-            <input type="text" name="input2" placeholder="Input 2">
+            <input type="text" name="dynamicInput" placeholder="Pizza ...">
+            <input type="text" name="dynamicInput" placeholder="Burger ...">
         </div>
         <button type="button" onclick="addInput()">Add Input</button>
         <button type="button" onclick="chooseRandomInput()">Choose Random Input</button>

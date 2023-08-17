@@ -28,6 +28,10 @@ body {
     margin-top: 20px;
   }
   
+  input {
+    background-color: #E5E4E2;
+  }
+
   label, input, button {
     margin-bottom: 15px;
     border: none;
@@ -37,9 +41,7 @@ body {
     box-sizing: border-box;
     font-size: 14px;
   }
-  input {
-    background-color: #f4f4f4;
-  }
+
   button {
     background-color: #3498db;
     color: white;
