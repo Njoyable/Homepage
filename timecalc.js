@@ -38,3 +38,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(resultDisplay);
   });
   
+  function calculateTime() {
+    const timeInput = document.getElementById("timeInput").value;
+    const minutesInput = parseInt(document.getElementById("minutesInput").value, 10);
+
+    if (isNaN(minutesInput)) {
+        alert("Please enter a valid number of minutes.");
+        return;
+    }
+
+    const timeParts = timeInput.split(":");
+    if (timeParts.length !== 2) {
+        alert("Please enter a valid time in the format hh:mm.");
+        return;
+    }
+
+    const hours = parseInt(timeParts[0], 10);
+    const minutes = parseInt(timeParts[1], 10);
+
+    if (isNaN(hours) || isNaN(minutes) || hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        alert("Please enter a valid time in the format hh:mm.");
+        return;
+    }
+
+    const totalMinutes = hours * 60 + minutes + minutesInput;
+    const newHours = Math.floor(totalMinutes / 60);
+    const newMinutes = totalMinutes % 60;
+
+    const newTime = `${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`;
+    document.getElementById("result").textContent = `Updated Time: ${newTime}`;
+};
