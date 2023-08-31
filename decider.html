@@ -3,40 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Input Decision</title>
+    <title>Decider</title>
     <link rel="stylesheet" href="decider.css">
-    <script>
-        function addInput() {
-            const container = document.getElementById("input-container");
-            const newInput = document.createElement("input");
-            newInput.type = "text";
-            newInput.name = "dynamicInput";
-            newInput.placeholder = "Enter something";
-            container.appendChild(newInput);
-        }
-
-        function chooseRandomInput() {
-            const inputElements = document.getElementsByName("dynamicInput");
-            const randomIndex = Math.floor(Math.random() * inputElements.length);
-            const chosenInput = inputElements[randomIndex].value;
-
-            const resultContainer = document.getElementById("result-container");
-            resultContainer.textContent = "Randomly chosen input: " + chosenInput;
-        }
-    </script>
+    <script src="decider.js"></script>
 </head>
 <body>
     <div class="topnav">
         <a href="index.html" style="float:right">Homepage</a>	
     </div>
-
+    <div><p>Füge Optionen ein. Die Pizza und Burger Felder müssen auch neu beschriftet werden!</p></div>
     <form>
         <div id="input-container">
-            <input type="text" name="input1" placeholder="Input 1">
-            <input type="text" name="input2" placeholder="Input 2">
+            <input type="text" name="dynamicInput" placeholder="Pizza ...">
+            <input type="text" name="dynamicInput" placeholder="Burger ...">
         </div>
-        <button type="button" onclick="addInput()">Add Input</button>
-        <button type="button" onclick="chooseRandomInput()">Choose Random Input</button>
+        <button type="button" onclick="addInput()">Feld hinzufügen...</button>
+        <button type="button" onclick="chooseRandomInput()">Zufall entscheiden lassen</button>
         
         <div id="result-container"></div>
     </form>
