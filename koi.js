@@ -1,12 +1,12 @@
 "use strict"
-let H, W, san, koi=[], X=100, Y=100
+let Height, Width, context, koi=[], X=100, Y=100
 let {hypot, atan2, sin, cos, random} = Math
  
 class Koi {
 
     constructor(x,y) {
-        this.x = random()*W;
-        this.y = random()*H;
+        this.x = random()*Width;
+        this.y = random()*Height;
         this.vx = 0 //Math.random()*4-2;
         this.vy = -random()*3-1; 
         this.s = .5;  
@@ -30,75 +30,75 @@ class Koi {
             p.push((k[i]*sin(this.A) + k[i+1]*cos(this.A))*this.s);
         }   
                                                 
-        san.beginPath();
-        san.fillStyle = this.c2;
-        san.moveTo(this.x+p[0],
+        context.beginPath();
+        context.fillStyle = this.c2;
+        context.moveTo(this.x+p[0],
                    this.y+p[1]);
-        san.bezierCurveTo(this.x+p[2],
+        context.bezierCurveTo(this.x+p[2],
                           this.y+p[3],
                           this.x+p[4],
                           this.y+p[5],
                           this.x+p[6],
                           this.y+p[7]);
-        san.fill();        
-        san.beginPath()
-        san.fillStyle = this.c2;
-        san.moveTo(this.x+p[8],
+        context.fill();        
+        context.beginPath()
+        context.fillStyle = this.c2;
+        context.moveTo(this.x+p[8],
                    this.y+p[9]);
-        san.bezierCurveTo(this.x+p[10],
+        context.bezierCurveTo(this.x+p[10],
                           this.y+p[11],
                           this.x+p[12],
                           this.y+p[13],
                           this.x+p[14],
                           this.y+p[15])
-        san.fill()        
-        san.beginPath();
-        san.fillStyle = this.c1;
-        san.moveTo(this.x+p[16],
+        context.fill()        
+        context.beginPath();
+        context.fillStyle = this.c1;
+        context.moveTo(this.x+p[16],
                    this.y+p[17]);        
-        san.bezierCurveTo(this.x+p[18],
+        context.bezierCurveTo(this.x+p[18],
                           this.y+p[19],
                           this.x+p[20],
                           this.y+p[21],
                           this.x+p[22],
                           this.y+p[23])
-        san.bezierCurveTo(this.x+p[24],
+        context.bezierCurveTo(this.x+p[24],
                           this.y+p[25],
                           this.x+p[26],
                           this.y+p[27],
                           this.x+p[28],
                           this.y+p[29])
-        san.fill();
-        san.beginPath();
-        san.fillStyle="black";
-        san.arc(this.x+p[30],this.y+p[31],1,0,44/7);
-        san.arc(this.x+p[32],this.y+p[33],1,0,44/7);
-        san.fill();
+        context.fill();
+        context.beginPath();
+        context.fillStyle="black";
+        context.arc(this.x+p[30],this.y+p[31],1,0,44/7);
+        context.arc(this.x+p[32],this.y+p[33],1,0,44/7);
+        context.fill();
         
-        san.beginPath()
-        san.strokeStyle = this.c2;
-        san.lineWidth = .5;
-        san.moveTo(this.x+p[34],
+        context.beginPath()
+        context.strokeStyle = this.c2;
+        context.lineWidth = .5;
+        context.moveTo(this.x+p[34],
                    this.y+p[35]); 
-        san.quadraticCurveTo(this.x+p[36],
+        context.quadraticCurveTo(this.x+p[36],
                              this.y+p[37],
                              this.x+p[38],
                              this.y+p[39])
-        san.stroke()
+        context.stroke()
         
-        san.beginPath()
-        san.fillStyle = this.c2;
-        san.moveTo(this.x+p[40],
+        context.beginPath()
+        context.fillStyle = this.c2;
+        context.moveTo(this.x+p[40],
                    this.y+p[41]); 
-        san.quadraticCurveTo(this.x+p[42],
+        context.quadraticCurveTo(this.x+p[42],
                              this.y+p[43],
                              this.x+p[44],
                              this.y+p[45])
-        san.quadraticCurveTo(this.x+p[46],
+        context.quadraticCurveTo(this.x+p[46],
                              this.y+p[47],
                              this.x+p[48],
                              this.y+p[49])                  
-        san.fill();                  
+        context.fill();                  
     }
     
     update() {
@@ -108,10 +108,10 @@ class Koi {
         this.x+=this.vx;
         this.y+=this.vy;
         this.A=atan2(this.vy,this.vx);        
-        if(this.x>W+100) this.x=-100;
-        if(this.x<-100) this.x=W+100;
-        if(this.y>H+100) this.y=-100;
-        if(this.y<-100) this.y=H+100;                
+        if(this.x>Width+100) this.x=-100;
+        if(this.x<-100) this.x=Width+100;
+        if(this.y>Height+100) this.y=-100;
+        if(this.y<-100) this.y=Height+100;                
         this.dx=0;
         this.dy=0;
     }
@@ -142,10 +142,10 @@ const M = e => {
 }
 
 const Loop = () => {
-    san.fillStyle ="rgba(30, 143, 195,.12)"
-    san.fillRect(0, 0, W, H)
-    san.fillStyle = "red";
-    san.fill()
+    context.fillStyle ="rgba(30, 143, 195,.12)"
+    context.fillRect(0, 0, Width, Height)
+    context.fillStyle = "red";
+    context.fill()
     koi.forEach(v=>v.draw())
     webkitRequestAnimationFrame(Loop);
 }
@@ -158,9 +158,9 @@ const init = () => {
     c.style.background = "black";
     c.style.width = "100vw";
     c.style.height = "100vh";
-    c.height = H = innerHeight*2;
-    c.width = W = innerWidth*2;
-    san = c.getContext('2d');  
+    c.height = Height = innerHeight*2;
+    c.width = Width = innerWidth*2;
+    context = c.getContext('2d');  
     for(let i=0;i<50;i++) koi.push(new Koi(200, 100+i*100));
     c.ontouchmove = M;
     Loop();
