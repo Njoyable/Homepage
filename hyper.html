@@ -5,21 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="hyper.css">
     <script src="hyper.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
     <title>Hypergeometrische Verteilung</title>
 </head>
 <body>
     <h1>Hypergeometrische Verteilung: Rechner</h1>
+    <p>In einem Topf sind N Kugeln. Von diesen N Kugeln gibt es M Kugeln die spezielle Merkmale erfüllen. Man ziehe nun n Kugeln aus dem Topf ohne Zurücklegen. Wie hoch ist die Wahrscheinlichkeit, 
+        dass sich k Kugeln mit speziellem Merkmal unter den n gezogenen Kugeln befinden?
+    </p>
+    <div id="formula">
+        \( P(X = k) = \frac{{\binom{M}{k} \cdot \binom{N - M}{n - k}}}{{\binom{N}{n}}} \)
+    </div>
     <form>
-        <label for="menge">Grundgesamtheit:</label>
+        <label for="menge">Grundgesamtheit N:</label>
         <input type="number" id="menge" name="menge">
 
-        <label for="mengeS">Menge mit speziellem Merkmal:</label>
+        <label for="mengeS">Menge mit speziellem Merkmal M:</label>
         <input type="number" name="mengeS" id="mengeS">
 
-        <label for="pulled">gezogene Menge:</label>
+        <label for="pulled">gezogene Menge n:</label>
         <input type="number" name="pulled" id="pulled">
 
-        <label for="special">gezogene Menge mit speziellem Merkmal:</label>
+        <label for="special">gezogene Menge mit speziellem Merkmal k:</label>
         <input type="number" name="special" id="special">
 
         <input type="submit" value="Calc">
