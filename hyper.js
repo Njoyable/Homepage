@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var pulledValue = parseFloat(pulled.value);
         var special = parseFloat(special.value);
 
-        var prob = calcBinomialCoe((mengeS, special) * calcBinomialCoe((menge-mengeS), (pulled-special))) / calcBinomialCoe(menge, pulled)
+        var prob = (calcBinomialCoe(mengeS, special) * calcBinomialCoe((menge-mengeS), (pulled-special))) / calcBinomialCoe(menge, pulled)
 
         result.textContent = "Wahrscheinlichkeit: " + prob;
 
