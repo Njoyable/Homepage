@@ -42,6 +42,7 @@
     flex: 1 0 100%;
     margin-bottom: 5px;
     display: block;
+    padding: auto;
   }
   
   .form input[type="number"] {
