@@ -36,6 +36,7 @@
   .form {
     display: flex;
     flex-wrap: wrap;
+    padding: auto;
   }
   
   .form label {
