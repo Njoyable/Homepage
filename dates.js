@@ -52,9 +52,10 @@ function selectRandomPanel() {
             
             // Trigger confetti effect
             confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 },
+                particleCount: 300, // Number of confetti pieces
+                spread: 180, // Burst in all directions
+                origin: { x: 0.5, y: 0.5 }, // Start from the center
+                scalar: 1.2, // Confetti size
             });
         }
     };
