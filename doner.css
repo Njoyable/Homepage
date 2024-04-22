@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.tier {
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.tier.S {
+    background-color: #FFD700; /* Gold */
+}
+
+.tier.A {
+    background-color: #C0C0C0; /* Silver */
+}
+
+.tier.B {
+    background-color: #CD7F32; /* Bronze */
+}
+
+.tier.C {
+    background-color: #F0E68C; /* Khaki */
+}
+
+.tier.D {
+    background-color: #FF6347; /* Tomato */
+}
+
+.tier h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.tier ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tier ul li {
+    margin: 5px 0;
+}
