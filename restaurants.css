@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #555;
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none; /* No bullet points */
+    padding-left: 0;
+}
+
+ul li {
+    padding: 5px 0;
+    font-size: 1.1em;
+}
+
+section {
+    margin: 20px 0;
+}
