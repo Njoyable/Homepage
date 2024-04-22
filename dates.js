@@ -2,7 +2,8 @@ const panels = document.querySelectorAll('.panel');
 
 function selectRandomPanel() {
     console.log("Button clicked, starting random selection process.");
-
+    const pickButton = document.getElementById('pick');
+    pickButton.disabled = true;
     // Reset all panels initially
     panels.forEach(panel => {
         panel.classList.remove('selected');
@@ -62,4 +63,5 @@ function selectRandomPanel() {
 
     // Set interval to create the "random flashing" effect
     const flashTimer = setInterval(flashRandomPanel, interval);
+    pickButton.disabled = false;
 }
