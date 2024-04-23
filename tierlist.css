@@ -16,23 +16,23 @@ h1 {
 }
 
 .tier.S {
-    background-color: #FFD700; /* Gold */
+    background-color: #FF5C5C; 
 }
 
 .tier.A {
-    background-color: #C0C0C0; /* Silver */
+    background-color: #ffae00; 
 }
 
 .tier.B {
-    background-color: #CD7F32; /* Bronze */
+    background-color: #FBEC5D; 
 }
 
 .tier.C {
-    background-color: #F0E68C; /* Khaki */
+    background-color: #A6FF33;
 }
 
 .tier.D {
-    background-color: #FF6347; /* Tomato */
+    background-color: #33FF4D; 
 }
 
 .tier h2 {
