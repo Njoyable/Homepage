@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Zeitrechner</title>
-  <link rel="stylesheet" type="text/css" href="timecalc.css">
-  <script src="timecalc.js"></script>
+    <title>Zeitrechner</title>
+    <link rel="stylesheet" type="text/css" href="timecalc.css">
+    <script src="timecalc.js"></script>
 </head>
 <body>
 
-    <div class="topnav">
-        <a href="index.html" style="float:right">Homepage</a>	
-    </div>
-    <div><p>Gib Uhrzeiten im "HH:MM" Format ein. </p></div>
-    <div class="centered-container">
-        <label for="title-diff">TIME DIFF</label>
-        <label for="start">Start</label>
-        <input type="text" id="start" name="input1" value="00:00"><br><br>
+<div class="topnav">
+    <a href="index.html" style="margin-left: 20px;">Homepage</a> <!-- Adjusted inline style for margin left -->
+</div>
 
-        <label for="end">End</label>
-        <input type="text" id="end" name="input2" value="00:00"><br><br>
+<div class="centered-container">
+    <div class="title-label">TIME DIFFERENCE</div>
+    <label for="start">Start</label>
+    <input type="text" id="start" name="input1" value="00:00"><br><br>
 
-        <button type="button" id="submitB">show timediff</button>
-    </div>
-    <div class="centered-container">
-        <label for="title-add">ADD TIME</label>
-        <label for="timeInput">Enter time (hh:mm):</label>
-        <input type="text" id="timeInput" value="00:00" placeholder="hh:mm" required>
-        <br>
-        <label for="minutesInput">Enter minutes to add:</label>
-        <input type="number" id="minutesInput" value="00:00" required>
-        <br>
-        <button onclick="calculateTime()">Add Minutes</button>
-        <br>
-        <p id="result"></p>
-    </div>
+    <label for="end">End</label>
+    <input type="text" id="end" name="input2" value="00:00"><br><br>
+
+    <button type="button" id="submitB">Calculate time difference</button>
+</div>
+
+<div class="centered-container">
+    <div class="title-label">ADD TIME</div>
+    <label for="timeInput">Enter time (hh:mm):</label>
+    <input type="text" id="timeInput" value="00:00" placeholder="hh:mm" required>
+    <br>
+    <label for="minutesInput">Enter minutes to add:</label>
+    <input type="number" id="minutesInput" value="00:00" required>
+    <br>
+    <button onclick="calculateTime()">Add minutes</button>
+    <br>
+    <p id="result"></p>
+</div>
+
 </body>
 </html>
-
