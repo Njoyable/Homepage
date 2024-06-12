@@ -1,18 +1,18 @@
-document.addEventListener("click", function(event) {
-    const dropdowns = document.querySelectorAll(".dropdown-content");
-    dropdowns.forEach(function(dropdown) {
-        const isClickInside = dropdown.parentNode.contains(event.target);
-        if (!isClickInside) {
-            dropdown.style.display = "none";
-        }
-    });
-});
+function toggleDropdown() {
+    console.log("Button clicked!");
+    document.getElementById("dropdownContent").classList.toggle("show");
+}
 
-const dropbtn = document.querySelector(".dropbtn");
-dropbtn.addEventListener("click", function() {
-    const dropdownContent = this.nextElementSibling;
-    dropdownContent.style.display =
-        dropdownContent.style.display === "none" || !dropdownContent.style.display
-            ? "block"
-            : "none";
-});
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    console.log("Window clicked!");
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
