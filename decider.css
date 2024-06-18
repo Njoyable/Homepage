@@ -10,9 +10,28 @@ body {
   }
   
   .topnav {
-    background-color: #f5f5f5;
+    background-color: blueviolet;
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .topnav a {
     color: white;
-    padding: 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-right: 20px;
+  }
+  
+  .topnav a:first-child {
+    margin-right: auto;
+  }
+  
+  .topnav a:hover {
+    color: #87CEEB;
   }
   
   .centered-container {
