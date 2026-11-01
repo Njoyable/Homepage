@@ -1,40 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Date Picker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Date Picker | N-Corp</title>
+
     <link rel="stylesheet" href="dates.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+    </script>
+
+    <script src="dates.js" defer></script>
 </head>
+
 <body>
-    <h1>Dates</h1>
-    <a href="index.html" class="button">Back</a> <br>
-    <button id="pick" class="btn" onclick="selectRandomPanel()">Pick!</button>
-    <div id="content">
-        <div class="panel-container">
-            <div class="panel">Aquarium</div>
-            <div class="panel">Sunset/Sunrise Gazing</div>
-            <div class="panel">Book Store</div>
-            <div class="panel">Museum</div>
-            <div class="panel">Photo Shooting</div>
-            <div class="panel">Concert</div>
-            <div class="panel">Lego</div>
-            <div class="panel">Cooking/Baking</div>
-            <div class="panel">Night Stroll</div>
-            <div class="panel">Painting</div>
-            <div class="panel">Movie Night</div>
-            <div class="panel">Late Night/Sleepover</div>
-            <div class="panel">Restaurant</div>
-            <div class="panel">Day Stroll</div>
-            <div class="panel">Café</div>
-            <div class="panel">Zoo</div>
-            <div class="panel">Random City Trip</div>
-            <div class="panel">Bowling</div>
-            <div class="panel">Billard</div>
-            <div class="panel">Flea Market</div>
-            <div class="panel">Puzzle</div>
-        </div>
-    </div>
-    <script src="dates.js"></script>
+
+    <header class="topnav">
+        <a href="index.html" class="home-link">
+            N-Corp
+        </a>
+
+        <span class="page-title">
+            Date Picker
+        </span>
+    </header>
+
+
+    <main class="page-content">
+
+        <section class="intro">
+
+            <p class="eyebrow">
+                N-Corp Tools
+            </p>
+
+            <h1>
+                Date Picker
+            </h1>
+
+        </section>
+
+
+        <section class="picker-card">
+
+            <div class="card-header">
+
+                <div class="card-icon">
+                    ❤️
+                </div>
+
+                <div>
+                    <h2 id="categoryTitle">
+                        All Dates
+                    </h2>
+
+                    <p id="categoryDescription">
+                        Pick from all available date ideas.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- CATEGORY SWITCH -->
+
+            <div class="category-switch">
+
+                <button
+                    type="button"
+                    class="category-button active"
+                    data-category="all"
+                >
+                    ❤️ All Dates
+                </button>
+
+                <button
+                    type="button"
+                    class="category-button"
+                    data-category="first"
+                >
+                    ✨ First Dates
+                </button>
+
+            </div>
+
+
+            <!-- PICK BUTTON -->
+
+            <button
+                type="button"
+                id="pick"
+                class="pick-button"
+            >
+                🎲 Pick a Date
+            </button>
+
+
+            <!-- RESULT -->
+
+            <div
+                id="result"
+                class="result"
+            >
+                Your date idea will appear here
+            </div>
+
+
+            <!-- DATE OPTIONS -->
+
+            <div
+                id="panel-container"
+                class="panel-container"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
 </body>
+
 </html>

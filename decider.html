@@ -3,24 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decider</title>
+
+    <title>Decider | N-Corp</title>
+
     <link rel="stylesheet" href="decider.css">
-    <script src="decider.js"></script>
+    <script src="decider.js" defer></script>
 </head>
+
 <body>
-    <div class="topnav">
-        <a href="index.html" style="float:right">Homepage</a>	
-    </div>
-    <div><p>Füge Optionen ein. Die Pizza und Burger Felder müssen auch neu beschriftet werden!</p></div>
-    <form>
-        <div id="input-container">
-            <input type="text" name="dynamicInput" placeholder="Pizza ...">
-            <input type="text" name="dynamicInput" placeholder="Burger ...">
-        </div>
-        <button type="button" onclick="addInput()">Feld hinzufügen...</button>
-        <button type="button" onclick="chooseRandomInput()">Zufall entscheiden lassen</button>
-        
-        <div id="result-container"></div>
-    </form>
+
+
+    <header class="topnav">
+        <a href="index.html" class="home-link">
+            N-Corp
+        </a>
+
+        <span class="page-title">Decider</span>
+    </header>
+
+
+    <main class="page-content">
+
+        <section class="intro">
+            <h1>Decider</h1>
+
+            <p>
+                Can't decide? Add your options and let chance make the decision.
+            </p>
+        </section>
+
+
+        <section class="decider-card">
+
+            <div class="card-header">
+                <div class="card-icon">🎲</div>
+
+                <div>
+                    <h2>Your Options</h2>
+
+                    <p>
+                        Add at least two options.
+                    </p>
+                </div>
+            </div>
+
+
+            <div id="input-container">
+
+                <div class="option-row">
+                    <input
+                        type="text"
+                        name="dynamicInput"
+                        placeholder="Pizza"
+                    >
+
+                    <button
+                        type="button"
+                        class="remove-button"
+                        aria-label="Remove option"
+                    >
+                        ×
+                    </button>
+                </div>
+
+
+                <div class="option-row">
+                    <input
+                        type="text"
+                        name="dynamicInput"
+                        placeholder="Burger"
+                    >
+
+                    <button
+                        type="button"
+                        class="remove-button"
+                        aria-label="Remove option"
+                    >
+                        ×
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div class="button-group">
+
+                <button
+                    type="button"
+                    id="addInputButton"
+                    class="secondary-button"
+                >
+                    + Add Option
+                </button>
+
+                <button
+                    type="button"
+                    id="decideButton"
+                    class="primary-button"
+                >
+                    🎲 Decide
+                </button>
+
+            </div>
+
+
+            <div
+                id="result-container"
+                class="result"
+            >
+                Your result will appear here
+            </div>
+
+        </section>
+
+    </main>
+
 </body>
 </html>

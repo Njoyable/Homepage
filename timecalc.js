@@ -1,71 +1,178 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const input1 = document.getElementById('start');
-    const input2 = document.getElementById('end');
-    const addButton = document.getElementById('submitB');
-    const differenceResultDisplay = document.getElementById('differenceResult');
-    const addMinutesButton = document.getElementById('addMinutesButton');
-    const addResultDisplay = document.getElementById('addResult');
+document.addEventListener("DOMContentLoaded", () => {
+  // =========================
+  // ELEMENTS
+  // =========================
 
-    addButton.addEventListener('click', function() {
-        const time1 = input1.value.split(':');
-        const time2 = input2.value.split(':');
-        
-        if (time1.length === 2 && time2.length === 2) {
-            const hours1 = parseInt(time1[0]);
-            const minutes1 = parseInt(time1[1]);
-            const hours2 = parseInt(time2[0]);
-            const minutes2 = parseInt(time2[1]);
-            
-            if (!isNaN(hours1) && !isNaN(minutes1) && !isNaN(hours2) && !isNaN(minutes2)) {
-                const totalMinutes1 = hours1 * 60 + minutes1;
-                const totalMinutes2 = hours2 * 60 + minutes2;
-                let timeDifference = totalMinutes2 - totalMinutes1;
-                
-                if (timeDifference < 0) {
-                    timeDifference += 24 * 60; 
-                }
-                
-                const resultHours = Math.floor(timeDifference / 60);
-                const resultMinutes = timeDifference % 60;
-                
-                differenceResultDisplay.textContent = `Time Difference: ${resultHours} hours ${resultMinutes} minutes`;
-            } else {
-                differenceResultDisplay.textContent = 'Invalid input';
-            }
-        } else {
-            differenceResultDisplay.textContent = 'Invalid time format';
-        }
-    });
+  const startInput = document.getElementById("start");
 
-    addMinutesButton.addEventListener('click', function() {
-        const timeInput = document.getElementById("timeInput").value;
-        const minutesInput = parseInt(document.getElementById("minutesInput").value, 10);
+  const endInput = document.getElementById("end");
 
-        if (isNaN(minutesInput)) {
-            alert("Please enter a valid number of minutes.");
-            return;
-        }
+  const differenceButton = document.getElementById("submitB");
 
-        const timeParts = timeInput.split(":");
-        if (timeParts.length !== 2) {
-            alert("Please enter a valid time in the format HH:MM.");
-            return;
-        }
+  const differenceResult = document.getElementById("differenceResult");
 
-        const hours = parseInt(timeParts[0]);
-        const minutes = parseInt(timeParts[1]);
+  const timeInput = document.getElementById("timeInput");
 
-        if (isNaN(hours) || isNaN(minutes)) {
-            alert("Please enter a valid time in the format HH:MM.");
-            return;
-        }
+  const hoursInput = document.getElementById("hoursInput");
 
-        let totalMinutes = hours * 60 + minutes + minutesInput;
-        totalMinutes = totalMinutes % (24 * 60); // Wrap around 24 hours
+  const minutesInput = document.getElementById("minutesInput");
 
-        const newHours = Math.floor(totalMinutes / 60);
-        const newMinutes = totalMinutes % 60;
+  const addTimeButton = document.getElementById("addTimeButton");
 
-        addResultDisplay.textContent = `New time: ${String(newHours).padStart(2, '0')}:${String(newMinutes).padStart(2, '0')}`;
-    });
+  const addResult = document.getElementById("addResult");
+
+  // =========================
+  // HELPER FUNCTIONS
+  // =========================
+
+  function timeToMinutes(time) {
+    const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
+
+    if (!timePattern.test(time)) {
+      return null;
+    }
+
+    const [hours, minutes] = time.split(":").map(Number);
+
+    return hours * 60 + minutes;
+  }
+
+  function formatTime(totalMinutes) {
+    // Keeps the result inside a 24-hour day
+    totalMinutes = ((totalMinutes % 1440) + 1440) % 1440;
+
+    const hours = Math.floor(totalMinutes / 60);
+
+    const minutes = totalMinutes % 60;
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+  }
+
+  function showResult(element, message, type) {
+    element.textContent = message;
+
+    element.classList.remove("success", "error");
+
+    element.classList.add(type);
+  }
+
+  // =========================
+  // TIME DIFFERENCE
+  // =========================
+
+  differenceButton.addEventListener("click", () => {
+    const start = timeToMinutes(startInput.value);
+
+    const end = timeToMinutes(endInput.value);
+
+    if (start === null || end === null) {
+      showResult(
+        differenceResult,
+        "Please enter valid times in HH:MM format.",
+        "error",
+      );
+
+      return;
+    }
+
+    let difference = end - start;
+
+    // If end is earlier than start,
+    // assume the end time is on the next day
+    if (difference < 0) {
+      difference += 1440;
+    }
+
+    const hours = Math.floor(difference / 60);
+
+    const minutes = difference % 60;
+
+    let resultText = "";
+
+    if (hours > 0) {
+      resultText += `${hours} ${hours === 1 ? "hour" : "hours"}`;
+    }
+
+    if (minutes > 0) {
+      if (hours > 0) {
+        resultText += " ";
+      }
+
+      resultText += `${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
+    }
+
+    if (difference === 0) {
+      resultText = "0 minutes";
+    }
+
+    showResult(differenceResult, resultText, "success");
+  });
+
+  // =========================
+  // ADD / SUBTRACT TIME
+  // =========================
+
+  addTimeButton.addEventListener("click", () => {
+    const time = timeToMinutes(timeInput.value);
+
+    const hours = Number(hoursInput.value || 0);
+
+    const minutes = Number(minutesInput.value || 0);
+
+    if (time === null) {
+      showResult(
+        addResult,
+        "Please enter a valid time in HH:MM format.",
+        "error",
+      );
+
+      return;
+    }
+
+    if (Number.isNaN(hours) || Number.isNaN(minutes)) {
+      showResult(addResult, "Please enter valid hours and minutes.", "error");
+
+      return;
+    }
+
+    const amountToAdd = hours * 60 + minutes;
+
+    const newTime = time + amountToAdd;
+
+    showResult(addResult, formatTime(newTime), "success");
+  });
+
+  // =========================
+  // ENTER KEY SUPPORT
+  // =========================
+
+  startInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      differenceButton.click();
+    }
+  });
+
+  endInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      differenceButton.click();
+    }
+  });
+
+  timeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      addTimeButton.click();
+    }
+  });
+
+  hoursInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      addTimeButton.click();
+    }
+  });
+
+  minutesInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      addTimeButton.click();
+    }
+  });
 });

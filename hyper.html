@@ -1,52 +1,239 @@
 <!DOCTYPE html>
-<html lang="de">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hypergeometric Distribution | N-Corp</title>
+
     <link rel="stylesheet" href="hyper.css">
-    <script src="hyper.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<title>Hypergeometrische Verteilung</title>
+
+    <script src="hyper.js" defer></script>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [["\\(", "\\)"]]
+            }
+        };
+    </script>
+
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 </head>
 
 <body>
-    <h1>Hypergeometrische Verteilung: Rechner</h1>
-    <p>In einem Topf sind N Kugeln. Von diesen N Kugeln gibt es M Kugeln die spezielle Merkmale erfüllen. Man ziehe nun
-        n Kugeln aus dem Topf ohne Zurücklegen. Wie hoch ist die Wahrscheinlichkeit,
-        dass sich k Kugeln mit speziellem Merkmal unter den n gezogenen Kugeln befinden?
-    </p>
-    <div id="formula">
-        \( P(X = k) = \frac{{\binom{M}{k} \cdot \binom{N - M}{n - k}}}{{\binom{N}{n}}} \)
-    </div>
-    <form>
-        <div>
-            <label for="menge">Grundgesamtheit N:</label>
-            <input type="number" id="menge" name="menge">
-        </div>
 
-        <div>
-            <label for="pulled">gezogene Menge n:</label>
-            <input type="number" name="pulled" id="pulled">
-        </div>
+    <header class="topnav">
+        <a href="index.html" class="home-link">
+            N-Corp
+        </a>
 
-        <div>
-            <label for="mengeS">Menge mit speziellem Merkmal M:</label>
-            <input type="number" name="mengeS" id="mengeS">
-        </div>
+        <span class="page-title">
+            Probability Calculator
+        </span>
+    </header>
 
-        <div>
-            <label for="special">gezogene Menge mit speziellem Merkmal k:</label>
-            <input type="number" name="special" id="special">
-        </div>
 
-        <div>
-            <input type="submit" value="Calc">
-        </div>
-    </form>
-    <p id="result"></p>
+    <main class="page-content">
+
+        <section class="intro">
+
+            <p class="eyebrow">
+                N-Corp Tools
+            </p>
+
+            <h1>
+                Hypergeometric Distribution
+            </h1>
+
+            <p class="intro-description">
+                Calculate the probability of drawing a specific number of
+                successful items from a population without replacement.
+            </p>
+
+        </section>
+
+
+        <section class="calculator-card">
+
+            <div class="card-header">
+
+                <div class="card-icon">
+                    📊
+                </div>
+
+                <div>
+                    <h2>Probability Calculator</h2>
+
+                    <p>
+                        Enter the population and sample values below.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="explanation">
+
+                <p>
+                    Suppose a population contains
+                    <strong>N</strong> items.
+                    Of those, <strong>M</strong> have a specific characteristic.
+                </p>
+
+                <p>
+                    You draw <strong>n</strong> items without replacement.
+                    This calculator determines the probability that exactly
+                    <strong>k</strong> of the drawn items have that characteristic.
+                </p>
+
+            </div>
+
+
+            <div class="formula-container">
+
+                <div class="formula-label">
+                    Formula
+                </div>
+
+                <div id="formula">
+                    \(
+                    P(X = k) =
+                    \frac{
+                        \binom{M}{k}
+                        \cdot
+                        \binom{N-M}{n-k}
+                    }{
+                        \binom{N}{n}
+                    }
+                    \)
+                </div>
+
+            </div>
+
+
+            <form id="hyperForm">
+
+                <div class="input-grid">
+
+                    <div class="input-group">
+
+                        <label for="menge">
+                            Population size
+                            <span>N</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="menge"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 50"
+                            required
+                        >
+
+                        <small>
+                            Total number of items
+                        </small>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="mengeS">
+                            Successful items
+                            <span>M</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="mengeS"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 10"
+                            required
+                        >
+
+                        <small>
+                            Items with the desired characteristic
+                        </small>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="pulled">
+                            Sample size
+                            <span>n</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="pulled"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 5"
+                            required
+                        >
+
+                        <small>
+                            Number of items drawn
+                        </small>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="special">
+                            Successful draws
+                            <span>k</span>
+                        </label>
+
+                        <input
+                            type="number"
+                            id="special"
+                            min="0"
+                            step="1"
+                            placeholder="Example: 2"
+                            required
+                        >
+
+                        <small>
+                            Desired number of successful items
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="calculate-button"
+                >
+                    Calculate Probability
+                </button>
+
+            </form>
+
+
+            <div
+                id="result"
+                class="result"
+            >
+                Enter your values and calculate the probability.
+            </div>
+
+        </section>
+
+    </main>
+
 </body>
-
 </html>

@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>N-Corp</title>
+
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div class="sidenav">
+
+    <div class="background-overlay"></div>
+
+    <button class="menu-button" id="menuButton" aria-label="Open navigation">
+        ☰
+    </button>
+
+    <nav class="sidenav" id="sidenav">
+
+        <div class="nav-header">
+            <h1>N-Corp</h1>
+            <p>Tools & Projects</p>
+        </div>
+
         <ul>
-            <li><a href="timecalc.html">Zeitrechner</a></li>
-            <li><a href="decider.html">Decider</a></li>
-            <li><a href="koi.html">Koi</a></li>
-            <li><a href="hyper.html">Hypergeometrische Verteilung Rechner</a></li>
-            <li><a href="dates.html">Date Picker</a></li>
-            <li><a href="firstdates.html">First Date Picker</a></li>
-            <li><a href="doner.html">Döner</a></li>
-            <li><a href="pizza.html">Pizza</a></li>
-            <li><a href="restaurants.html">Restaurants</a></li>
-        </ul>
-    </div>
-    <div class="content">
-        <img src="koi-pond.gif" alt="Koi Fish Pond animated">
-        <img src="tuila.gif" alt="Tui and La">
-    </div>
+            <li>
+                <a href="timecalc.html">
+                    <span>⏱️</span>
+                    Time Calculator
+                </a>
+            </li>
+
+            <li>
+                <a href="decider.html">
+                    <span>🎲</span>
+                    Decider
+                </a>
+            </li>
+
+            <li>
+                <a href="hyper.html">
+                    <span>📊</span>
+                    Probability Calculator
+                </a>
+            </li>
+
+            <li>
+                <a href="dates.html">
+                    <span>📅</span>
+                    Date Picker
+                </a>
+            </li>
+
+    </nav>
+
+    <main class="content">
+
+        <section class="hero">
+            <p class="eyebrow">Welcome to</p>
+
+            <h2>N-Corp</h2>
+
+            <p class="description">
+                A little collection of tools i find useful.
+            </p>
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+
 </body>
 </html>

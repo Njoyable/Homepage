@@ -1,39 +1,123 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Zeitrechner</title>
-    <link rel="stylesheet" type="text/css" href="timecalc.css">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Zeitrechner | N-Corp</title>
+
+    <link rel="stylesheet" href="timecalc.css" />
     <script src="timecalc.js" defer></script>
-</head>
-<body>
+  </head>
 
-<div class="topnav">
-    <a href="index.html" style="margin-left: 20px;">Homepage</a>
-</div>
+  <body>
 
-<div class="centered-container">
-    <div class="title-label">TIME DIFFERENCE</div>
-    <label for="start">Start</label>
-    <input type="text" id="start" name="input1" value="00:00"><br><br>
+    <header class="topnav">
+      <a href="index.html" class="home-link"> N-Corp </a>
 
-    <label for="end">End</label>
-    <input type="text" id="end" name="input2" value="00:00"><br><br>
+      <span class="page-title">Time Calculator</span>
+    </header>
 
-    <button type="button" id="submitB">Calculate time difference</button>
-    <p id="differenceResult"></p>
-</div>
+    <main class="page-content">
+      <section class="intro">
+        <h1>Time Calculator</h1>
+      </section>
 
-<div class="centered-container">
-    <div class="title-label">ADD TIME</div>
-    <label for="timeInput">Enter time (hh:mm):</label>
-    <input type="text" id="timeInput" value="00:00" placeholder="hh:mm" required>
-    <br>
-    <label for="minutesInput">Enter minutes to add:</label>
-    <input type="number" id="minutesInput" required>
-    <br>
-    <button type="button" id="addMinutesButton">Add minutes</button>
-    <p id="addResult"></p>
-</div>
+      <div class="calculator-grid">
+        <!-- TIME DIFFERENCE -->
 
-</body>
+        <section class="calculator-card">
+          <div class="card-icon">⏱️</div>
+
+          <h2>Time Difference</h2>
+
+          <p class="card-description">
+            Calculate how much time passes between two times.
+          </p>
+
+          <div class="input-group">
+            <label for="start">Start time</label>
+            <input
+              type="text"
+              id="start"
+              value="00:00"
+              placeholder="HH:MM"
+              inputmode="numeric"
+              maxlength="5"
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="end">End time</label>
+            <input
+              type="text"
+              id="end"
+              value="00:00"
+              placeholder="HH:MM"
+              inputmode="numeric"
+              maxlength="5"
+            />
+          </div>
+
+          <button type="button" id="submitB" class="calculate-button">
+            Calculate Difference
+          </button>
+
+          <div class="result" id="differenceResult">
+            Result will appear here
+          </div>
+        </section>
+
+        <!-- ADD TIME -->
+
+        <section class="calculator-card">
+          <div class="card-icon">🕒</div>
+
+          <h2>Add Time</h2>
+
+          <p class="card-description">
+            Add hours and minutes to a selected time.
+          </p>
+
+          <div class="input-group">
+            <label for="timeInput">Time</label>
+
+            <input
+              type="text"
+              id="timeInput"
+              value="00:00"
+              placeholder="HH:MM"
+              inputmode="numeric"
+              maxlength="5"
+            />
+          </div>
+
+          <div class="time-add-inputs">
+            <div class="input-group">
+              <label for="hoursInput">Hours</label>
+
+              <input type="number" id="hoursInput" value="0" placeholder="0" />
+            </div>
+
+            <div class="input-group">
+              <label for="minutesInput">Minutes</label>
+
+              <input
+                type="number"
+                id="minutesInput"
+                value="0"
+                placeholder="0"
+              />
+            </div>
+          </div>
+
+          <button type="button" id="addTimeButton" class="calculate-button">
+            Add Time
+          </button>
+
+          <div class="result" id="addResult">Result will appear here</div>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>

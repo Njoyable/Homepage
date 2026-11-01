@@ -1,51 +1,323 @@
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    min-height: 100vh;
+
+    color: white;
+
+    background-image: url("koi-pond.gif");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    overflow-x: hidden;
+}
+
+
+/* DARK OVERLAY OVER GIF */
+
+.background-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 15, 25, 0.72),
+            rgba(4, 15, 25, 0.25)
+        );
+
+    z-index: 0;
+}
+
+
+/* SIDEBAR */
 
 .sidenav {
-  width: 200px;
-  height: 100vh;
-  background-color: #ffb7c5;
-  padding-top: 20px;
-  position: fixed;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 280px;
+    height: 100vh;
+
+    padding: 30px 20px;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+
+    z-index: 10;
+
+    overflow-y: auto;
+
+    transition: transform 0.3s ease;
 }
+
+
+/* NAV HEADER */
+
+.nav-header {
+    padding: 0 12px 25px;
+}
+
+.nav-header h1 {
+    font-size: 28px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 4px;
+}
+
+.nav-header p {
+    color: rgba(255, 255, 255, 0.6);
+
+    font-size: 14px;
+}
+
+
+/* NAV LIST */
 
 .sidenav ul {
-  list-style-type: none;
-  padding: 0;
+    list-style: none;
 }
 
-.sidenav ul li {
-  padding: 8px 16px;
+.sidenav li {
+    margin-bottom: 6px;
 }
 
-.sidenav ul li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  transition: color 0.3s ease; /* Smooth transition for color change */
+.sidenav a {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
-.sidenav ul li a:hover {
-  color: #87CEEB; /* Light blue color */
+.sidenav a span {
+    width: 24px;
+
+    text-align: center;
 }
+
+
+/* NAV HOVER */
+
+.sidenav a:hover {
+    color: white;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    transform: translateX(4px);
+}
+
+
+/* MAIN CONTENT */
 
 .content {
-  margin-left: 200px;
-  padding: 16px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  box-sizing: border-box;
+    position: relative;
+
+    z-index: 1;
+
+    margin-left: 280px;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
 }
 
-.content img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 16px;
+
+/* HERO */
+
+.hero {
+    max-width: 700px;
+
+    padding: 50px;
+
+    border-radius: 24px;
+
+    background: rgba(8, 18, 30, 0.45);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow {
+    color: #7dd3fc;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.hero h2 {
+    font-size: clamp(48px, 8vw, 90px);
+
+    line-height: 1;
+
+    margin-bottom: 24px;
+}
+
+.description {
+    max-width: 520px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    margin-bottom: 30px;
+}
+
+
+/* BUTTON */
+
+.primary-button {
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    background: #38bdf8;
+
+    color: #06131e;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.primary-button:hover {
+    background: #7dd3fc;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(56, 189, 248, 0.3);
+}
+
+
+/* MENU BUTTON */
+
+.menu-button {
+    display: none;
+
+    position: fixed;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 12px;
+
+    background: rgba(15, 23, 42, 0.7);
+
+    backdrop-filter: blur(12px);
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .menu-button {
+        display: block;
+    }
+
+    .sidenav {
+        transform: translateX(-100%);
+    }
+
+    .sidenav.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+
+        padding: 90px 20px 30px;
+    }
+
+    .hero {
+        padding: 35px 25px;
+
+        width: 100%;
+    }
+
+    .hero h2 {
+        font-size: 56px;
+    }
 }

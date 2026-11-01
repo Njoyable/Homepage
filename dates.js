@@ -1,67 +1,355 @@
-const panels = document.querySelectorAll('.panel');
+document.addEventListener("DOMContentLoaded", () => {
 
-function selectRandomPanel() {
-    console.log("Button clicked, starting random selection process.");
-    const pickButton = document.getElementById('pick');
-    pickButton.disabled = true;
-    // Reset all panels initially
-    panels.forEach(panel => {
-        panel.classList.remove('selected');
-    });
+    // =========================
+    // DATE OPTIONS
+    // =========================
 
-    // Create a list of randomly ordered panel indexes
-    const randomSequence = Array.from(panels.keys()).sort(() => Math.random() - 0.5);
+    const allDates = [
+        "Aquarium",
+        "Sunset / Sunrise Gazing",
+        "Book Store",
+        "Museum",
+        "Photo Shooting",
+        "Concert",
+        "Lego",
+        "Cooking / Baking",
+        "Night Stroll",
+        "Painting",
+        "Movie Night",
+        "Late Night / Sleepover",
+        "Restaurant",
+        "Day Stroll",
+        "Café",
+        "Zoo",
+        "Random City Trip",
+        "Bowling",
+        "Billiards",
+        "Flea Market",
+        "Puzzle"
+    ];
 
-    // Number of times to flash random panels before settling on one
-    const flashCount = 20; // Flash 20 times
-    const interval = 200; // Interval between flashes (200 ms)
 
-    let currentIndex = 0;
+    const firstDates = [
+        "Aquarium",
+        "Museum",
+        "Cooking / Baking",
+        "Night Stroll",
+        "Restaurant",
+        "Day Stroll",
+        "Café",
+        "Zoo",
+        "Bowling",
+        "Billiards",
+        "Flea Market"
+    ];
 
-    // Function to reset all panels
-    function resetPanels() {
-        panels.forEach(panel => {
-            panel.classList.remove('selected');
+
+    // =========================
+    // ELEMENTS
+    // =========================
+
+    const panelContainer =
+        document.getElementById("panel-container");
+
+    const pickButton =
+        document.getElementById("pick");
+
+    const result =
+        document.getElementById("result");
+
+    const categoryTitle =
+        document.getElementById("categoryTitle");
+
+    const categoryDescription =
+        document.getElementById("categoryDescription");
+
+    const categoryButtons =
+        document.querySelectorAll(".category-button");
+
+
+    let currentCategory = "all";
+
+    let currentOptions = allDates;
+
+
+    // =========================
+    // RENDER DATE OPTIONS
+    // =========================
+
+    function renderPanels() {
+
+        panelContainer.innerHTML = "";
+
+
+        currentOptions.forEach(option => {
+
+            const panel =
+                document.createElement("div");
+
+            panel.classList.add("panel");
+
+            panel.textContent = option;
+
+            panelContainer.appendChild(panel);
+
         });
     }
 
-    // Function to flash a random panel
-    const flashRandomPanel = () => {
-        console.log(`Flash ${currentIndex + 1} of ${flashCount}`);
 
-        // Reset all panels
+    // =========================
+    // CATEGORY SWITCH
+    // =========================
+
+    function changeCategory(category) {
+
+        currentCategory = category;
+
+
+        if (category === "first") {
+
+            currentOptions = firstDates;
+
+            categoryTitle.textContent =
+                "First Dates";
+
+            categoryDescription.textContent =
+                "Ideas suited for getting to know someone.";
+
+        } else {
+
+            currentOptions = allDates;
+
+            categoryTitle.textContent =
+                "All Dates";
+
+            categoryDescription.textContent =
+                "Pick from all available date ideas.";
+        }
+
+
+        categoryButtons.forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.category === category
+            );
+
+        });
+
+
+        result.textContent =
+            "Your date idea will appear here";
+
+        result.classList.remove(
+            "success"
+        );
+
+
+        renderPanels();
+    }
+
+
+    // =========================
+    // RESET PANELS
+    // =========================
+
+    function resetPanels() {
+
+        document
+            .querySelectorAll(".panel")
+            .forEach(panel => {
+
+                panel.classList.remove(
+                    "active",
+                    "selected"
+                );
+
+            });
+    }
+
+
+    // =========================
+    // RANDOM PANEL
+    // =========================
+
+    function getRandomPanel() {
+
+        const panels =
+            document.querySelectorAll(".panel");
+
+        const randomIndex =
+            Math.floor(
+                Math.random() *
+                panels.length
+            );
+
+        return panels[randomIndex];
+    }
+
+
+    // =========================
+    // PICK DATE
+    // =========================
+
+    function selectRandomPanel() {
+
+        pickButton.disabled = true;
+
+
+        categoryButtons.forEach(button => {
+            button.disabled = true;
+        });
+
+
+        result.classList.remove(
+            "success"
+        );
+
+
+        result.textContent =
+            "Choosing your date...";
+
+
         resetPanels();
 
-        // Highlight the current random panel
-        const panelToFlash = panels[randomSequence[currentIndex % panels.length]];
-        panelToFlash.classList.add('selected');
 
-        currentIndex++;
+        let flashes = 0;
 
-        // If we've flashed enough times, stop flashing and choose the final panel
-        if (currentIndex >= flashCount) {
-            console.log("Flashing complete. Selecting final panel.");
+        const totalFlashes = 20;
 
-            clearInterval(flashTimer); // Stop the flashing timer
+        const flashSpeed = 120;
 
-            // Reset all panels again to ensure only the final panel is selected
-            resetPanels();
-            
-            // Final choice
-            const finalPanel = panels[randomSequence[randomSequence.length - 1]];
-            finalPanel.classList.add('selected');
-            
-            // Trigger confetti effect
-            confetti({
-                particleCount: 300, // Number of confetti pieces
-                spread: 180, // Burst in all directions
-                origin: { x: 0.5, y: 0.5 }, // Start from the center
-                scalar: 1.2, // Confetti size
-            });
+
+        const flashTimer =
+            setInterval(() => {
+
+                resetPanels();
+
+
+                const currentPanel =
+                    getRandomPanel();
+
+
+                currentPanel.classList.add(
+                    "active"
+                );
+
+
+                flashes++;
+
+
+                if (flashes >= totalFlashes) {
+
+                    clearInterval(
+                        flashTimer
+                    );
+
+                    finishSelection();
+                }
+
+            }, flashSpeed);
+    }
+
+
+    // =========================
+    // FINAL SELECTION
+    // =========================
+
+    function finishSelection() {
+
+        resetPanels();
+
+
+        const finalPanel =
+            getRandomPanel();
+
+
+        finalPanel.classList.add(
+            "selected"
+        );
+
+
+        result.textContent =
+            `❤️ ${finalPanel.textContent}`;
+
+
+        result.classList.add(
+            "success"
+        );
+
+
+        launchConfetti();
+
+
+        pickButton.disabled = false;
+
+
+        categoryButtons.forEach(button => {
+            button.disabled = false;
+        });
+    }
+
+
+    // =========================
+    // CONFETTI
+    // =========================
+
+    function launchConfetti() {
+
+        if (
+            typeof confetti !== "function"
+        ) {
+            return;
         }
-    };
 
-    // Set interval to create the "random flashing" effect
-    const flashTimer = setInterval(flashRandomPanel, interval);
-    pickButton.disabled = false;
-}
+
+        confetti({
+
+            particleCount: 180,
+
+            spread: 100,
+
+            origin: {
+                x: 0.5,
+                y: 0.6
+            },
+
+            scalar: 1
+
+        });
+    }
+
+
+    // =========================
+    // EVENTS
+    // =========================
+
+    pickButton.addEventListener(
+        "click",
+        selectRandomPanel
+    );
+
+
+    categoryButtons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                changeCategory(
+                    button.dataset.category
+                );
+
+            }
+        );
+
+    });
+
+
+    // =========================
+    // INITIAL LOAD
+    // =========================
+
+    renderPanels();
+
+});
